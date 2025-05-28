@@ -1,4 +1,3 @@
-//This environment block can be used at pipeline level and stage level.
 pipeline {
     agent any
     // This environment variables can be used accross all the stages
@@ -12,6 +11,7 @@ pipeline {
             // This environment variable are specific to stage level only
             environment {
                 cloud = "GCP"
+                name = "Maha"
             }
             steps {
                 echo "Welcome ${name}"
