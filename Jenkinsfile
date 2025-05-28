@@ -17,14 +17,8 @@ pipeline {
                 echo "Welcome ${name}"
                 echo "you enrolled to ${course} course"
                 echo "you are certified in ${cloud}"
-            }
-        }
-        stage ('secondstage') {
-            steps {
-                echo "Welcome ${name}"
-                echo "you enrolled to ${course} course"
-                echo "you are certified in ${cloud}"
+                sh "printenv"
             }
         }
     }
-}
+} 
