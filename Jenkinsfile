@@ -10,7 +10,7 @@ pipeline {
             steps {
                 echo "Slave login credentials are ${Slave_Login}"
                 echo "slave login user name is ${Slave_Login_USR}"
-                echo "slave login password is ${Slave_Login_PWD}"
+                echo "slave login password is ${Slave_Login_PSW}"
             }
         }
     }
