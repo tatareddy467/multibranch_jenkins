@@ -1,14 +1,15 @@
-// when condition should have atleast one condition
-// https://www.jenkins.io/doc/book/pipeline/syntax/#when
 pipeline {
     agent any
     environment {
-        DEPLOY_TO = 'production'
+        DEPLOY_TO = 'production', actual: "${DEPLOY_TO}"
     }
     stages {
         stage ('Deploy'){
             when {
-                environment name: 'DEPLOY_TO', value: 'production'
+                //equals expected: 'production', actual: "${DEPLOY_TO}"
+                //equals expected: 5, actual: "${BUILD_NUMBER}" 
+                equals expected: 5, actual: currentBuild.number
+                //environment name: 'DEPLOY_TO', value: 'production'
 
             }
             steps {
