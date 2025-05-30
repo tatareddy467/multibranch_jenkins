@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DEPLOY_TO = "production", actual: "${DEPLOY_TO}"
+        DEPLOY_TO = 'production'
     }
     stages {
         stage ('Deploy'){
