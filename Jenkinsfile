@@ -1,32 +1,16 @@
 pipeline {
     agent any
     environment {
-        name = "Naani"
-        course = "K8S"
+        // credentials ('id'), this id should be the same from jenkins credentials
+        Slave_Login = credentials ('naani-user-jenkins-slave')
+        name = "NAANI"
     }
     stages {
         stage ('Build') {
             steps {
-                echo "Welcome ${name}"
-                echo "You are enrolled ${course}"
-            }
-        }
-        stage ('secondstage') {
-            environment {
-                cloud = "GCP"
-                name = "vijaya"
-            }
-            steps {
-                echo "Welcome ${name}"
-                echo "You are enrolled ${course}"
-                echo "you are certified in ${cloud}"
-            }
-        }
-        stage ('thirdstage') {
-            steps {
-                echo "Welcome ${name}"
-                echo "You are enrolled ${course}"
-                echo "you are certified in ${cloud}"
+                echo "Slave login credentials are ${Slave_Login}"
+                echo "slave login user name is ${Slave_Login_USR}"
+                echo "slave login password is ${Slave_Login_PWD}"
             }
         }
     }
