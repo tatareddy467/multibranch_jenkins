@@ -6,9 +6,9 @@ pipeline {
     stages {
         stage ('Deploy'){
             when {
-                //equals expected: 'production', actual: "${DEPLOY_TO}"
+                equals expected: 'production', actual: "${DEPLOY_TO}"
                 //equals expected: 5, actual: "${BUILD_NUMBER}" 
-                equals expected: 18, actual: "currentBuild.number"
+                //equals expected: 18, actual: "currentBuild.number"
                 //environment name: 'DEPLOY_TO', value: 'production'
 
             }
