@@ -23,9 +23,11 @@ pipeline {
             }
         }
         stage ('thirdstage') {
-            echo "Welcome ${name}"
-            echo "You are enrolled ${course}"
-            echo "you are certified in ${cloud}"
+            steps {
+                echo "Welcome ${name}"
+                echo "You are enrolled ${course}"
+                echo "you are certified in ${cloud}"
+            }
         }
     }
 }
