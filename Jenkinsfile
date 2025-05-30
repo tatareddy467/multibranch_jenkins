@@ -1,32 +1,18 @@
+// when condition should have atleast one condition
+// https://www.jenkins.io/doc/book/pipeline/syntax/#when
 pipeline {
     agent any
     environment {
-        name = "Naani"
-        course = "K8S"
+        DEPLOY_TO = 'production'
     }
     stages {
-        stage ('Build') {
-            steps {
-                echo "Welcome ${name}"
-                echo "You are enrolled ${course}"
-            }
-        }
-        stage ('secondstage') {
-            environment {
-                cloud = "GCP"
-                name = "vijaya"
+        stage ('Deploy'){
+            when {
+                environment name: 'DEPLOY_TO', value: 'production'
+
             }
             steps {
-                echo "Welcome ${name}"
-                echo "You are enrolled ${course}"
-                echo "you are certified in ${cloud}"
-            }
-        }
-        stage ('thirdstage') {
-            steps {
-                echo "Welcome ${name}"
-                echo "You are enrolled ${course}"
-                echo "you are certified in ${cloud}"
+                echo "Deploying"
             }
         }
     }
