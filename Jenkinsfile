@@ -1,24 +1,25 @@
 pipeline {
     agent any
-    // This environment variables can be used accross all the stages
     environment {
-        // key value pair
         name = "Naani"
-        course = "k8s"
-    } 
+        course = "K8S"
+    }
     stages {
         stage ('Build') {
-            // This environment variable are specific to stage level only
+            steps {
+                echo "Welcome ${name}"
+                echo "You are enrolled ${course}"
+            }
+        }
+        stage ('secondstage') {
             environment {
                 cloud = "GCP"
-                name = "Maha"
             }
             steps {
                 echo "Welcome ${name}"
-                echo "you enrolled to ${course} course"
+                echo "You are enrolled ${course}"
                 echo "you are certified in ${cloud}"
-                sh "printenv"
             }
         }
     }
-} 
+}
