@@ -1,15 +1,16 @@
 pipeline {
     agent any
     environment {
-        Jenkins_Creds = credentials ('testingforjenkinscredentials')
-        name = "test"
+        // credentials ('id'), this id should be the same from jenkins credentials
+        Slave_Login = credentials ('naani-user-jenkins-slave')
+        name = "NAANI"
     }
     stages {
         stage ('Build') {
             steps {
-                echo "login credentials are ${Jenkins_Creds}"
-                echo "login user name is ${Jenkins_Creds_USR}"
-                echo "login user password is ${Jenkins_Creds_PSW}"
+                echo "Slave login credentials are ${Slave_Login}"
+                echo "slave login user name is ${Slave_Login_USR}"
+                echo "slave login password is ${Slave_Login_PSW}"
             }
         }
     }
