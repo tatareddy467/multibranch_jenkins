@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         login = credentials('naani-user-jenkins-slave')
+        name = "NAANI"
     }
     stages {
         stage ('Build') {
