@@ -1,16 +1,15 @@
 pipeline {
     agent any
     environment {
-        // credentials ('id'), this id should be the same from jenkins credentials
-        Slave_Login = credentials ('naani-user-jenkins-slave')
-        //name = "NAANI"
+        DEPLOY_TO = 'production'
     }
     stages {
-        stage ('Build') {
+        stage ('Deploy to') {
+            when {
+                environment name: 'DEPLOY_TO', value: 'production'
+            }
             steps {
-                echo "Slave login credentials are ${Slave_Login}"
-                echo "slave login user name is ${Slave_Login_USR}"
-                echo "slave login password is ${Slave_Login_PSW}"
+                echo "Deploying"
             }
         }
     }
