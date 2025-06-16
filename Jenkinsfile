@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        Jenkins_Creds = credentials('testingforjenkinscredentials')
+        Jenkins_Creds = credentials ('testingforjenkinscredentials')
         name = "test"
     }
     stages {
