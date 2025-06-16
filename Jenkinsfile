@@ -1,15 +1,15 @@
 pipeline {
     agent any
     environment {
-        Jenkins_Creds = credentials ('testingforjenkinscredentials')
-        name = "test"
+        DEPLOY_TO = 'production'
     }
     stages {
-        stage ('Build') {
+        stage ('Deploy to') {
+            when {
+                environment name: 'DEPLOY_TO', value: 'production'
+            }
             steps {
-                echo "login credentials are ${Jenkins_Creds}"
-                echo "login user name is ${Jenkins_Creds_USR}"
-                echo "login user password is ${Jenkins_Creds_PSW}"
+                echo "Deploying"
             }
         }
     }
