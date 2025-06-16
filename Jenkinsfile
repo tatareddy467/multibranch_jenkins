@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'java-slave'
+    }
     environment {
         login = credentials('naani-user-jenkins-slave')
         name = "NAANI"
