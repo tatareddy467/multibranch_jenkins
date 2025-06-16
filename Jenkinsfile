@@ -1,22 +1,15 @@
 pipeline {
     agent any
-    tools {
-        maven 'My_Maven'
+    environment {
+        Jenkins_Creds = credentials('testingforjenkinscredentials')
+        name = "test"
     }
     stages {
-        stage ('Maven') {
+        stage ('Build') {
             steps {
-                echo "Welcome to tools example"
-                sh "mvn --version"
-            }
-        }
-        stage ('other maven') {
-            tools {
-                jdk 'jdk_17'
-            }
-            steps {
-                echo "Maven version with jdk 17"
-                sh "mvn --version"
+                echo "login credentials are ${Jenkins_Creds}"
+                echo "login user name is ${Jenkins_Creds_USR}"
+                echo "login user password is ${Jenkins_Creds_PSW}"
             }
         }
     }
