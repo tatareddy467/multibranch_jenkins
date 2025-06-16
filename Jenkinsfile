@@ -1,24 +1,13 @@
 pipeline {
     agent any
+    environment {
+       Pranav = credentials ('naani-user-jenkins-slave')
+    }
     stages {
         stage ('Build') {
             steps {
-                echo "Executing Multi branch pipeline from git"
-            }
-        }
-        stage ('test') {
-            steps {
-                echo "Executing Test stage"
-            }
-        }
-        stage ('deploytodev') {
-            steps {
-                echo "Executing dev deployment stage"
-            }
-        }
-        stage ('deploytoprod') {
-            steps {
-                echo "Executing to prod deployment stage"
+                echo "Git hub login credentials are ${Pranav}"
+                echo "git hub user name is ${Pranav_USR}"
             }
         }
     }
