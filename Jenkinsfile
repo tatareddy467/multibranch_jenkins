@@ -3,7 +3,7 @@ pipeline {
     environment {
         // credentials ('id'), this id should be the same from jenkins credentials
         Slave_Login = credentials ('naani-user-jenkins-slave')
-        name = "NAANI"
+        //name = "NAANI"
     }
     stages {
         stage ('Build') {
