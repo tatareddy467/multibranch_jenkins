@@ -1,19 +1,15 @@
 pipeline {
     agent any
     environment {
-        DEPLOY_TO = 'production'
+        name = "Naani"
+        course = "K8S"
     }
     stages {
-        stage ('Deploy'){
-            when {
-                equals expected: 'production', actual: "${DEPLOY_TO}"
-                //equals expected: 5, actual: "${BUILD_NUMBER}" 
-                //equals expected: 18, actual: "currentBuild.number"
-                //environment name: 'DEPLOY_TO', value: 'production'
-
-            }
+        stage ('Build') {
             steps {
-                echo "Deploying"
+                echo "Welcome ${name}"
+                echo "You enrolled ${course} Course"
+                //echo "You are certified in GCP"
             }
         }
     }
