@@ -18,11 +18,13 @@ pipeline {
         stage ('Second Stage') {
             environment {
                 cloud = "AWS"
+            }    
             steps {
                 echo "Welcome ${name}"
                 echo "you are enrolled to ${course}"
                 echo "you are certified in ${cloud}"                
             }
+        
         }
     }
 }
