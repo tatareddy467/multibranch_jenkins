@@ -1,12 +1,13 @@
 pipeline {
-    agent any
+    agent any 
     environment {
-        DEPLOY_TO = 'stage'
+        DEPLOT_TO = 'production'
     }
     stages {
-        stage ('Deploy to') {
+        stage ('Deploy') {
             when {
-                environment name: 'DEPLOY_TO', value: 'production'
+                //environment name: 'DEPLOY_TO', value: 'production'
+                equals expected: 'production', actual: '${DEPLOY_TO}'
             }
             steps {
                 echo "Deploying"
