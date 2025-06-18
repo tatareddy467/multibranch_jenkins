@@ -1,25 +1,28 @@
 pipeline {
-    agent any 
+    agent any
+    environment {
+        DEPLOY_TO = 'production'
+    }
     stages {
         stage ('Build') {
             steps {
-                echo "Welcome to Build Stage"
+                echo "Welcome to build stage"
             }
         }
         stage ('Deploy to Dev') {
             steps {
-                echo "deploying to Dev environment"
+                echo "Deploying to Dev environment"
             }
         }
         stage ('Deploy to Stage') {
             when {
-                expression {
-                    // stage should execute with either production branch or staging branch
-                    BRANCH_NAME ==~ /(production|staging)/
+                anyOf {
+                    branch 'production'
+                    environment name: 'DEPLOY_TO', value: 'productions' // this condition should fail but stage should execure bcoz of anyOf condition
                 }
             }
             steps {
-                echo "deploying to stage environment"
+                echo "Deploying to Stage environment"
             }
         }
     }
