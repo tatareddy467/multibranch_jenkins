@@ -1,15 +1,12 @@
 pipeline {
     agent any
-    environment {
-        DEPLOY_TO = 'production'
-    }
     stages {
-        stage ('Deploy to') {
+        stage ('Build') {
             when {
-                environment name: 'DEPLOY_TO', value: 'production'
+                branch 'release-*'
             }
             steps {
-                echo "Deploying"
+                echo "Deploying to Stage environment"
             }
         }
     }
