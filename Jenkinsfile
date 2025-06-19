@@ -14,7 +14,7 @@ pipeline {
         stage ('Deploy to Stage') {
             when {
                 expression {
-                    branch ==~ /(production|staging)/
+                    BRANCH_NAME ==~ /(production|staging)/
                 }
             }
             steps {
