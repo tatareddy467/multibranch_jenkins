@@ -1,22 +1,22 @@
 pipeline {
     agent any
-    tools {
-        maven 'My_Maven'
-    }
     stages {
-        stage ('Maven') {
+        stage ('Build') {
             steps {
-                echo "Welcome to tools example"
-                sh "mvn --version"
+                echo "Welcome to Build stage"
             }
         }
-        stage ('other maven') {
-            tools {
-                jdk 'jdk_17'
+        stage ('Deploy to Dev') {
+            steps {
+                echo "Deploying to Dev environment"
+            }
+        }
+        stage ('Deploy to Stage') {
+            when {
+                branch 'production'
             }
             steps {
-                echo "Maven version with jdk 17"
-                sh "mvn --version"
+                echo "Deploying to Stage environment"
             }
         }
     }
