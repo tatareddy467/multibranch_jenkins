@@ -13,9 +13,9 @@ pipeline {
         }
         stage ('Deploy to Stage') {
             when {
-                
+                expression {
                     branch ==~ /(production|staging)/
-                
+                }
             }
             steps {
                 echo "Deploying to Stage environment"
