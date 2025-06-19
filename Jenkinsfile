@@ -1,25 +1,24 @@
 pipeline {
-    agent any 
+    agent any
     stages {
         stage ('Build') {
             steps {
-                echo "Welcome to Build Stage"
+                echo "Welcome to Build stage"
             }
         }
         stage ('Deploy to Dev') {
             steps {
-                echo "deploying to Dev environment"
+                echo "Deploying to Dev environment"
             }
         }
         stage ('Deploy to Stage') {
             when {
-                expression {
-                    // stage should execute with either production branch or staging branch
-                    BRANCH_NAME ==~ /(production|staging)/
-                }
+                
+                    branch ==~ /(production|staging)/
+                
             }
             steps {
-                echo "deploying to stage environment"
+                echo "Deploying to Stage environment"
             }
         }
     }
